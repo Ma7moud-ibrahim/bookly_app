@@ -4,7 +4,6 @@ import 'package:bookly_app/constant.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/utils.dart';
 
 class SplashViewBody extends StatefulWidget {
