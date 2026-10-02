@@ -62,7 +62,7 @@ flutter:
   fonts:
     - family: GTSectraFine
       fonts:
-        - asset: assets/fonts/GTSectraFine-Regular.ttf
+        - asset: assets/fonts/GTSectraFine_Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
