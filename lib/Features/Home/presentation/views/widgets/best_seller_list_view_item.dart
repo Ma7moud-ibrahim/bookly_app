@@ -16,7 +16,7 @@ class BooksListViewItem extends StatelessWidget {
         context.pushNamed(AppRouter.kDetailsView);
       },
       child: Padding(
-        padding: const EdgeInsets.only(right: 8, left: 8, bottom: 16, top: 24),
+        padding: const EdgeInsets.only(right: 8, left: 0, bottom: 16, top: 24),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
