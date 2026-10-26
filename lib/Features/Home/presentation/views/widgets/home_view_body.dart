@@ -1,8 +1,10 @@
 import 'package:bookly_app/Features/Home/presentation/views/widgets/best_seller_list_view.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/featured_books_list_view.dart';
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -15,7 +17,11 @@ class HomeViewBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomAppbar(),
+              CustomAppbar(
+                onPressed: () {
+                  context.pushNamed(AppRouter.kSearchView);
+                },
+              ),
               BooksListView(),
               const SizedBox(height: 50),
               Padding(

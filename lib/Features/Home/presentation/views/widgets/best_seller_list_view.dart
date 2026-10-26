@@ -11,7 +11,7 @@ class BestSellerListView extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       itemCount: 7,
       itemBuilder: (context, index) {
-        return BestSellerListViewItem();
+        return BooksListViewItem();
       },
     );
   }

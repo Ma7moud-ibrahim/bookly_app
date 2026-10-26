@@ -2,8 +2,8 @@ import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppbar extends StatelessWidget {
-  const new({super.key});
-
+  const CustomAppbar({super.key, required this.onPressed});
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,7 +13,7 @@ class CustomAppbar extends StatelessWidget {
         children: [
           Image.asset(AssetsDate.logo),
           IconButton(
-            onPressed: () {},
+            onPressed: onPressed,
             icon: Icon(Icons.search, size: 33, fontWeight: FontWeight.w900),
           ),
         ],
