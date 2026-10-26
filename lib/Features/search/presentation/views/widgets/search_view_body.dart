@@ -7,18 +7,21 @@ class SearchViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        const SliverToBoxAdapter(
-          child: Column(
-            children: [SizedBox(height: 50), CustomSearchTextFeild()],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: CustomScrollView(
+        slivers: [
+          const SliverToBoxAdapter(
+            child: Column(
+              children: [SizedBox(height: 50), CustomSearchTextFeild()],
+            ),
           ),
-        ),
-        SliverList.builder(
-          itemCount: 7,
-          itemBuilder: (context, index) => const BooksListViewItem(),
-        ),
-      ],
+          SliverList.builder(
+            itemCount: 7,
+            itemBuilder: (context, index) => const BooksListViewItem(),
+          ),
+        ],
+      ),
     );
   }
 }
