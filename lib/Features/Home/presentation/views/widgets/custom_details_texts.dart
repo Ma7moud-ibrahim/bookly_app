@@ -7,7 +7,7 @@ class CustomDetailsTextsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 80),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 80),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
