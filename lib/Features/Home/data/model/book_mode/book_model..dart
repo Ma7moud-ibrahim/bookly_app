@@ -5,7 +5,7 @@ import 'sale_info..dart';
 import 'search_info..dart';
 import 'volume_info..dart';
 
-class BookMode extends Equatable {
+class BookModel extends Equatable {
   final String? kind;
   final String? id;
   final String? etag;
@@ -15,7 +15,7 @@ class BookMode extends Equatable {
   final AccessInfo? accessInfo;
   final SearchInfo? searchInfo;
 
-  const BookMode({
+  const BookModel({
     this.kind,
     this.id,
     this.etag,
@@ -26,7 +26,7 @@ class BookMode extends Equatable {
     this.searchInfo,
   });
 
-  factory BookMode.fromJson(Map<String, dynamic> json) => BookMode(
+  factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
     kind: json['kind'] as String?,
     id: json['id'] as String?,
     etag: json['etag'] as String?,
