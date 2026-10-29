@@ -1,6 +1,6 @@
 import 'package:bookly_app/Features/Home/data/model/book_mode/book_model..dart';
 import 'package:bookly_app/Features/Home/data/repos/home_repo.dart';
-import 'package:bookly_app/core/errors/faliures.dart';
+import 'package:bookly_app/core/errors/failures.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
 import 'package:dartz/dartz.dart';
 
@@ -9,7 +9,7 @@ class HomeRepoImpl extends HomeRepo {
 
   new(this.apiService);
   @override
-  Future<Either<Faliures, List<BookModel>>> fetchNewestSellerBooks() async {
+  Future<Either<Failures, List<BookModel>>> fetchNewestSellerBooks() async {
     try {
       var date = await apiService.get(
         endPoint: 'volumes?q=programming&Filtering=free-ebook&Sorting=newest',
@@ -20,12 +20,12 @@ class HomeRepoImpl extends HomeRepo {
       }
       return right(books);
     } catch (e) {
-      return left(ServerFailure());
+      return left(ServerFailure('Unexpected error: $e'));
     }
   }
 
   @override
-  Future<Either<Faliures, List<BookModel>>> fetchFeaturedBooks() {
+  Future<Either<Failures, List<BookModel>>> fetchFeaturedBooks() {
     // TODO: implement fetchFeaturedBooks
     throw UnimplementedError();
   }
