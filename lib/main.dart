@@ -1,5 +1,6 @@
 import 'package:bookly_app/Features/Home/data/repos/home_repo_impl.dart';
 import 'package:bookly_app/Features/Home/presentation/view_model/featured_cubit/featured_cubit.dart';
+import 'package:bookly_app/Features/Home/presentation/view_model/newset_books_cubit/newset_books_cubit.dart';
 import 'package:bookly_app/constant.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/service_leactor.dart';
@@ -20,7 +21,11 @@ class BooklyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => FeaturedCubit(getIt.get<HomeRepoImpl>()),
+          create: (context) =>
+              FeaturedCubit(getIt.get<HomeRepoImpl>())..featchFeaturedBooks(),
+        ),
+        BlocProvider(
+          create: (context) => NewsetBooksCubit(getIt.get<HomeRepoImpl>()),
         ),
       ],
       child: MaterialApp.router(

@@ -104,8 +104,8 @@ class ServerFailure extends Failures {
       return null;
     }
 
-    // Supports: {"Error": {"message": "..."}}
-    final error = response['Error'];
+    // Google APIs return errors as {"error": {"message": "..."}}
+    final error = response['error'] ?? response['Error'];
     if (error is Map && error['message'] is String) {
       return error['message'] as String;
     }

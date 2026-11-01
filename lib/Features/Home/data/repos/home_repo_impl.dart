@@ -3,6 +3,7 @@ import 'package:bookly_app/Features/Home/data/repos/home_repo.dart';
 import 'package:bookly_app/core/errors/failures.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImpl extends HomeRepo {
   final ApiService apiService;
@@ -19,6 +20,8 @@ class HomeRepoImpl extends HomeRepo {
         books.add(item);
       }
       return right(books);
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioError(e));
     } catch (e) {
       return left(ServerFailure('Unexpected error: $e'));
     }
@@ -35,6 +38,8 @@ class HomeRepoImpl extends HomeRepo {
         books.add(item);
       }
       return right(books);
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioError(e));
     } catch (e) {
       return left(ServerFailure('Unexpected error: $e'));
     }
