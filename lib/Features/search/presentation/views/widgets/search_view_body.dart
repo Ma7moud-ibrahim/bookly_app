@@ -25,7 +25,8 @@ class SearchViewBody extends StatelessWidget {
           ),
           SliverList.builder(
             itemCount: 7,
-            itemBuilder: (context, index) => const BooksListViewItem(),
+            itemBuilder: (context, index) => Text('hello'),
+            // const BooksListViewItem(),
           ),
         ],
       ),

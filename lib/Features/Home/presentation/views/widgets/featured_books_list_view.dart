@@ -1,7 +1,7 @@
 import 'package:bookly_app/Features/Home/presentation/view_model/featured_cubit/featured_cubit.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/custom_list_view_item.dart';
-import 'package:bookly_app/core/widgets/custom_circle_progress.dart';
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
+import 'package:bookly_app/core/widgets/featured_books_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +17,7 @@ class BooksListView extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.30,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 10,
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -31,7 +31,7 @@ class BooksListView extends StatelessWidget {
         } else if (state is FeathuredCubitFailure) {
           return CustomErrorWidget(state.errorMessage);
         } else {
-          return Customcircleprogress();
+          return const FeaturedBooksShimmer();
         }
       },
     );
