@@ -1,5 +1,4 @@
 import 'package:bookly_app/Features/Home/data/model/book_model/book_model.dart';
-import 'package:bookly_app/Features/Home/data/model/book_model/volume_info.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:bookly_app/constant.dart';
