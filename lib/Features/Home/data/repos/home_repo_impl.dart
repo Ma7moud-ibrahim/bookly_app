@@ -45,4 +45,25 @@ class HomeRepoImpl extends HomeRepo {
       return left(ServerFailure('Unexpected error: $e'));
     }
   }
+
+  @override
+  Future<Either<Failures, List<BookModel>>> fetchSimilerBooks({
+    required String category,
+  }) async {
+    try {
+      final q = Uri.encodeQueryComponent('subject:$category');
+      var data = await apiService.get(
+        endPoint: 'volumes?q=$q&filter=free-ebooks&orderBy=relevance',
+      );
+      List<BookModel> books = [];
+      for (var item in (data['items'] ?? [])) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      return left(ServerFailure('Unexpected error: $e'));
+    }
+  }
 }
