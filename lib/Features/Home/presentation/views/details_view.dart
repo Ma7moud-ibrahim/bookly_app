@@ -14,14 +14,21 @@ class DetailsView extends StatefulWidget {
 class _DetailsViewState extends State<DetailsView> {
   @override
   void initState() {
-    BlocProvider.of<SimilerBooksCubit>(
-      context,
-    ).featchSimilarBooks(category: widget.bookModel.volumeInfo.categories![0]);
     super.initState();
+    final categories = widget.bookModel.volumeInfo.categories;
+    if (categories != null && categories.isNotEmpty) {
+      BlocProvider.of<SimilerBooksCubit>(
+        context,
+      ).featchSimilarBooks(category: categories[0]);
+    } else {
+      BlocProvider.of<SimilerBooksCubit>(context).featchSimilarBooks(
+        category: '',
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: const DetailsViewBody());
+    return Scaffold(body: DetailsViewBody(bookModel: widget.bookModel));
   }
 }

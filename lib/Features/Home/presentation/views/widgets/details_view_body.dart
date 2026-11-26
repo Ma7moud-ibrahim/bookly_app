@@ -1,3 +1,4 @@
+import 'package:bookly_app/Features/Home/data/model/book_model/book_model.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/books_details_section.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/custom_details_app_bar.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/not_strecth_scroll_bahavior.dart';
@@ -6,8 +7,8 @@ import 'package:bookly_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class DetailsViewBody extends StatelessWidget {
-  const DetailsViewBody({super.key});
-
+  const DetailsViewBody({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return ScrollConfiguration(
@@ -19,7 +20,7 @@ class DetailsViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const CustomBookDetailsAppBar(),
-                const BookDetailsSection(),
+                BookDetailsSection(bookModel: bookModel),
                 Padding(
                   padding: const EdgeInsets.only(left: 40, top: 40),
                   child: Text(

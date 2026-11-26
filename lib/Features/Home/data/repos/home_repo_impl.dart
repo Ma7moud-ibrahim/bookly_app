@@ -53,11 +53,16 @@ class HomeRepoImpl extends HomeRepo {
     try {
       final q = Uri.encodeQueryComponent('subject:$category');
       var data = await apiService.get(
-        endPoint: 'volumes?q=$q&filter=free-ebooks&orderBy=relevance',
+        endPoint: 'volumes?q=$q&maxResults=20&orderBy=relevance',
       );
       List<BookModel> books = [];
       for (var item in (data['items'] ?? [])) {
-        books.add(BookModel.fromJson(item));
+        final book = BookModel.fromJson(item as Map<String, dynamic>);
+        final imageLinks = book.volumeInfo.imageLinks;
+        if (imageLinks?.thumbnail?.isNotEmpty == true ||
+            imageLinks?.smallThumbnail?.isNotEmpty == true) {
+          books.add(book);
+        }
       }
       return right(books);
     } on DioException catch (e) {

@@ -9,12 +9,16 @@ class CustomBookImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final secureImageUrl = imageUrl.startsWith('http://')
+        ? imageUrl.replaceFirst('http://', 'https://')
+        : imageUrl;
+
     return AspectRatio(
       aspectRatio: 2.7 / 4,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: CachedNetworkImage(
-          imageUrl: imageUrl,
+          imageUrl: secureImageUrl,
           fit: BoxFit.cover,
           placeholder: (context, url) => Shimmer.fromColors(
             baseColor: Colors.grey.shade800,

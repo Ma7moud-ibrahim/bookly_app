@@ -10,8 +10,13 @@ class SimilerBooksCubit extends Cubit<SimilerBooksState> {
   final HomeRepo homeRepo;
 
   Future<void> featchSimilarBooks({required String category}) async {
+    if (category.trim().isEmpty) {
+      emit(SimilerBooksFailure('No category is available for this book.'));
+      return;
+    }
+
     emit(SimilerBooksLoading());
-    var result = await homeRepo.fetchFeaturedBooks();
+    var result = await homeRepo.fetchSimilerBooks(category: category);
     result.fold(
       (failure) {
         emit(SimilerBooksFailure(failure.errorMessage));
