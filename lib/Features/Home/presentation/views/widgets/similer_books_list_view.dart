@@ -1,8 +1,11 @@
 import 'package:bookly_app/Features/Home/presentation/view_model/similer_books_cubit/similer_books_cubit.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/custom_list_view_item.dart';
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
+import 'package:bookly_app/core/widgets/similar_books_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SimilerBooksListView extends StatelessWidget {
   const SimilerBooksListView({super.key});
@@ -20,14 +23,22 @@ class SimilerBooksListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CustomBookImage(
-                    state.books[index].volumeInfo.imageLinks?.thumbnail ??
-                        state
-                            .books[index]
-                            .volumeInfo
-                            .imageLinks
-                            ?.smallThumbnail ??
-                        '',
+                  child: GestureDetector(
+                    onTap: () {
+                      context.pushNamed(
+                        AppRouter.kDetailsView,
+                        extra: state.books[index],
+                      );
+                    },
+                    child: CustomBookImage(
+                      state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                          state
+                              .books[index]
+                              .volumeInfo
+                              .imageLinks
+                              ?.smallThumbnail ??
+                          '',
+                    ),
                   ),
                 );
               },
@@ -36,7 +47,7 @@ class SimilerBooksListView extends StatelessWidget {
         } else if (state is SimilerBooksFailure) {
           return CustomErrorWidget(state.errorMessage);
         } else {
-          return const SizedBox.shrink();
+          return SimilarBooksShimmer();
         }
       },
     );

@@ -6,8 +6,13 @@ class FeaturedBooksShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.sizeOf(context).height;
+
+    final bookHeight = screenHeight * 0.28;
+    final bookWidth = bookHeight * (2.7 / 4);
+
     return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.3,
+      height: bookHeight,
       child: Shimmer.fromColors(
         baseColor: Colors.grey.shade800,
         highlightColor: Colors.grey.shade600,
@@ -19,7 +24,8 @@ class FeaturedBooksShimmer extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Container(
-                width: 150,
+                width: bookWidth,
+                height: bookHeight,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),

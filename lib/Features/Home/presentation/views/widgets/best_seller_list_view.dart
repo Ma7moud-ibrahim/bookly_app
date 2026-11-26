@@ -1,5 +1,6 @@
 import 'package:bookly_app/Features/Home/presentation/view_model/newset_books_cubit/newset_books_cubit.dart';
 import 'package:bookly_app/Features/Home/presentation/views/widgets/best_seller_list_view_item.dart';
+import 'package:bookly_app/core/widgets/best_seller_books_shimmer.dart';
 import 'package:bookly_app/core/widgets/books_list_view_item_shimmer.dart';
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class BestSellerListView extends StatelessWidget {
         } else if (state is NewsetBooksFailure) {
           return Center(child: CustomErrorWidget(state.errorMessage));
         } else {
-          return BooksListViewShimmer();
+          return BestSellerBooksShimmer();
         }
       },
     );

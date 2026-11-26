@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class CustomBookImage extends StatelessWidget {
   const CustomBookImage(this.imageUrl, {super.key});
@@ -20,11 +19,7 @@ class CustomBookImage extends StatelessWidget {
         child: CachedNetworkImage(
           imageUrl: secureImageUrl,
           fit: BoxFit.cover,
-          placeholder: (context, url) => Shimmer.fromColors(
-            baseColor: Colors.grey.shade800,
-            highlightColor: Colors.grey.shade600,
-            child: Container(color: Colors.white),
-          ),
+          placeholder: (context, url) => Container(color: Colors.grey.shade800),
           errorWidget: (context, url, error) => Container(
             color: Colors.grey.shade800,
             child: const Icon(Icons.broken_image, color: Colors.white54),
